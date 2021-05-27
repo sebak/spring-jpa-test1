@@ -1,0 +1,30 @@
+Postgres:
+
+1- se connecter au User par default (postgres) créé lorque'on install postgresql
+
+$ sudo su - postgres
+
+2- se connecter à cette db en tant que postgres
+
+$ psql
+
+3- créer une base de donné exemple student
+
+postgres=# CREATE DATABASE student;
+CREATE DATABASE
+
+4- créer un user ou un role avec un password
+postgres=# CREATE USER student WITH ENCRYPTED PASSWORD 'student';
+CREATE ROLE
+
+5- donner les privilèges de la base de données au user (faire attention sur une base en prod voir si on donne tous les droits même le delete)
+
+postgres=# GRANT ALL PRIVILEGES ON DATABASE student to student;
+GRANT
+
+6- se déconnecter en tant que postgres et se connecter à nouveau
+
+psql -p 5432 -h 127.0.0.1 -d student -U student -W
+
+
+
